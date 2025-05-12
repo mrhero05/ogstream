@@ -9,7 +9,7 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
-});
+})->name('homepage');
 
 Route::middleware([
     'auth:sanctum',
