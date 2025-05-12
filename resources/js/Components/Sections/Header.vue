@@ -18,10 +18,16 @@ const props = defineProps({
 
 </script>
 <template>
-    <header class="py-3 border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <nav v-if="canLogin" class="container mx-auto flex flex-1 justify-end">
-            <NavigationMenu>
-                <NavigationMenuList>
+    <header class="py-2 border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <nav v-if="canLogin" class="container mx-auto">
+            <NavigationMenu class="!max-w-full main-menu">
+                <NavigationMenuList class="flex flex-row !max-w-full">
+                    <NavigationMenuItem>
+                        <NavigationMenuLink
+                            :href="route('homepage')">
+                            <img class="w-[150px] h-auto" src="@/assets/images/ogstream-logo.png" alt="ogstream_logo">
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
                     <NavigationMenuItem v-if="$page.props.auth.user">
                         <NavigationMenuLink
                             :href="route('dashboard')"
@@ -29,7 +35,7 @@ const props = defineProps({
                             Dashboard
                         </NavigationMenuLink>
                     </NavigationMenuItem>
-                    <NavigationMenuItem v-else>
+                    <NavigationMenuItem v-else class="ml-auto">
                         <NavigationMenuLink
                             :href="route('login')"
                             :class="navigationMenuTriggerStyle()">
