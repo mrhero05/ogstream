@@ -8,7 +8,16 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '@/Components/ui/navigation-menu'
+} from '@/Components/ui/navigation-menu';
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/Components/ui/sheet'
 
 const props = defineProps({
     canLogin: Boolean,
@@ -18,7 +27,7 @@ const props = defineProps({
 
 </script>
 <template>
-    <header class="py-2 border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header class="py-1 border-grid sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <nav v-if="canLogin" class="container mx-auto">
             <NavigationMenu class="!max-w-full main-menu">
                 <NavigationMenuList class="flex flex-row !max-w-full">
@@ -35,7 +44,7 @@ const props = defineProps({
                             Dashboard
                         </NavigationMenuLink>
                     </NavigationMenuItem>
-                    <NavigationMenuItem v-else class="ml-auto">
+                    <NavigationMenuItem v-else class="ml-auto gap-x-[5px] flex">
                         <NavigationMenuLink
                             :href="route('login')"
                             :class="navigationMenuTriggerStyle()">
@@ -48,6 +57,20 @@ const props = defineProps({
                             Register
                         </NavigationMenuLink>
                     </NavigationMenuItem>
+
+                    <!-- Mobile Menu -->
+                    <Sheet>
+                        <SheetTrigger class="block md:hidden p-[8px_16px] hover:cursor-pointer"><i class="fa-solid fa-bars"></i></SheetTrigger>
+                        <SheetContent>
+                        <SheetHeader>
+                            <SheetTitle>Menu</SheetTitle>
+                            <SheetDescription>
+                            This action cannot be undone. This will permanently delete your account
+                            and remove your data from our servers.
+                            </SheetDescription>
+                        </SheetHeader>
+                        </SheetContent>
+                    </Sheet>
                 </NavigationMenuList>
             </NavigationMenu>
         </nav>
