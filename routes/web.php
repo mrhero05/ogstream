@@ -1,15 +1,14 @@
 <?php
 
+use App\Http\Controllers\FilmController;
+use App\Http\Controllers\HomepageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Homepage', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-})->name('homepage');
+Route::middleware('tmdb')->group(function () {
+});
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 Route::middleware([
     'auth:sanctum',

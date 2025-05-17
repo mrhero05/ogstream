@@ -12,14 +12,21 @@
 @source '../../vendor/laravel/jetstream/**/*.blade.php';
 
 @theme {
-  --font-sans:
-    Figtree, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Custom Color */
+    --color-os-white: #FFFFFF;
+    --color-os-black: #000000;
+    --font-sans:
+        Figtree, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 @layer components {
     .main-menu > div:first-child {
         @apply w-full
+    }
+
+    .dark-overlay {
+        background: linear-gradient(270deg, rgba(24, 24, 24, 0.3) 5%, rgb(21 21 21 / 11%) 50%, rgb(0 0 0) 100%);
     }
 }
 
